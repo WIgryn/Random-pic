@@ -32,14 +32,8 @@
 
     p {
       font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: #333;
-    }
-
-    .counter {
-      font-size: 1rem;
       margin-bottom: 2rem;
-      color: #444;
+      color: #333;
     }
 
     .btn-container {
@@ -103,12 +97,12 @@
 </head>
 <body>
   <h1>✨ Random Everything</h1>
-  <p>Tu sais pas quoi faire ? Clique et laisse-toi surprendre 👇</p>
-  <div class="counter" id="counter">🌍 Nombre de randoms générés : <span id="count">0</span></div>
+  <p>Tu sais pas quoi faire ? Clique sur un bouton au hasard 👇</p>
 
   <div class="btn-container">
-    <a class="button" href="random-pic.html" onclick="incrementCounter()">🖼️ Image random</a>
-    <a class="button" href="random-quote.html" onclick="incrementCounter()">💭 Citation random</a>
+    <a class="button" href="random-pic.html">🖼️ Image random</a>
+    <a class="button" href="random-quote.html">💭 Citation random</a>
+    <a class="button" href="random-look.html">🧥 Look random</a>
   </div>
 
   <footer>
@@ -116,7 +110,6 @@
   </footer>
 
   <script>
-    // Emoji animation
     const emojis = ["💫", "🧠", "👀", "🍕", "🐸", "🎲", "🌈", "😎", "🚀", "🐱‍👤"];
     const numberOfEmojis = 30;
 
@@ -128,16 +121,6 @@
       emoji.style.animationDuration = 6 + Math.random() * 8 + "s";
       emoji.style.fontSize = (1.5 + Math.random() * 2) + "rem";
       document.body.appendChild(emoji);
-    }
-
-    // Counter
-    let count = localStorage.getItem("randomCount") || 0;
-    document.getElementById("count").textContent = count;
-
-    function incrementCounter() {
-      count++;
-      localStorage.setItem("randomCount", count);
-      document.getElementById("count").textContent = count;
     }
   </script>
 </body>
