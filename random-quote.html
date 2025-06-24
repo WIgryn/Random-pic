@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Quote 🔎</title>
+  <meta name="description" content="Une citation aléatoire à chaque clic. Inspire-toi.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .quote-box {
+      background-color: #1e1e1e;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .quote {
+      font-size: 1.4rem;
+      font-style: italic;
+    }
+
+    .author {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #aaa;
+    }
+
+    button {
+      background-color: #00ff90;
+      color: #000000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00cc70;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔎 Random Quote</h1>
+  <div class="quote-box">
+    <div class="quote" id="quote">Chargement...</div>
+    <div class="author" id="author"></div>
+  </div>
+  <button onclick="loadRandomQuote()">Nouvelle citation</button>
+
+  <footer>
+    Random Quote – Créé avec amour © 2025
+  </footer>
+
+  <script>
+    const quotes = [
+      { text: "Le plus grand risque est de ne prendre aucun risque.", author: "Mark Zuckerberg" },
+      { text: "Ils ne savaient pas que c'était impossible, alors ils l'ont fait.", author: "Mark Twain" },
+      { text: "Sois le changement que tu veux voir dans le monde.", author: "Gandhi" },
+      { text: "L'imagination est plus importante que le savoir.", author: "Albert Einstein" },
+      { text: "Rêvons nos vies, vivons nos rêves.", author: "Anonyme" }
+    ];
+
+    function loadRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quote").textContent = quotes[randomIndex].text;
+      document.getElementById("author").textContent = "- " + quotes[randomIndex].author;
+    }
+
+    window.onload = loadRandomQuote;
+  </script>
+</body>
+</html>
