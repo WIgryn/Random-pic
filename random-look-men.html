@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>🧍‍♂️ Look Homme</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 2rem;
+      color: #ccc;
+    }
+
+    img {
+      margin: 2rem auto;
+      max-width: 90%;
+      max-height: 60vh;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .btns {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    button, a {
+      padding: 12px 20px;
+      font-weight: bold;
+      font-size: 1rem;
+      background: #ffffff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    button:hover, a:hover {
+      background: #f4f4f4;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>🧍‍♂️ Look Homme</h1>
+  <img id="lookImage" src="" alt="Look aléatoire">
+  <div class="btns">
+    <button onclick="loadLook()">Encore un look</button>
+    <a href="random-look.html">🔙 Retour au choix</a>
+  </div>
+
+  <script>
+    const looksMen = [
+      "https://i.pinimg.com/564x/6b/3f/bf/6b3fbf250d18f617a04126e2e9b378ad.jpg",
+      "https://i.pinimg.com/564x/9f/f4/2d/9ff42d3f07370c8b697a5fcb122c2dd5.jpg",
+      "https://i.pinimg.com/564x/99/2f/67/992f6791cb9a38e345350dd7a6c2d2f6.jpg",
+      "https://i.pinimg.com/564x/69/9f/71/699f716ab5e13d56aa3cf56dcd2a57c6.jpg",
+      "https://i.pinimg.com/564x/0c/3c/8f/0c3c8f18d6efac70e38fc5cfac4041b4.jpg"
+    ];
+
+    function loadLook() {
+      const img = document.getElementById("lookImage");
+      const index = Math.floor(Math.random() * looksMen.length);
+      img.src = looksMen[index] + "?t=" + new Date().getTime();
+    }
+
+    window.onload = loadLook;
+  </script>
+</body>
+</html>
