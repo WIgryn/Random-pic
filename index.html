@@ -4,88 +4,141 @@
   <meta charset="UTF-8">
   <title>🎉 Random Everything</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Un site pour découvrir des choses totalement aléatoires.">
+  <meta name="description" content="Un site plein de surprises aléatoires pour rigoler ou s’inspirer.">
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fceabb, #f8b500, #ff6f61, #c471f5, #12c2e9);
+      background-size: 400% 400%;
+      animation: gradientFlow 12s ease infinite;
+      color: #000;
       text-align: center;
+      overflow: hidden;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     h1 {
       font-size: 2.8rem;
-      margin-bottom: 0.5rem;
+      margin-top: 3rem;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
     }
 
     p {
       font-size: 1.2rem;
-      color: #aaa;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .counter {
+      font-size: 1rem;
       margin-bottom: 2rem;
+      color: #444;
     }
 
     .btn-container {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      width: 100%;
-      max-width: 320px;
+      width: 90%;
+      max-width: 340px;
+      margin: 2rem auto;
+      z-index: 2;
+      position: relative;
     }
 
     a.button {
       text-decoration: none;
-      background: #00ff90;
-      color: #000;
+      background: white;
+      color: #333;
       padding: 15px;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 1.1rem;
       font-weight: bold;
-      transition: 0.3s;
-      box-shadow: 0 0 15px rgba(0, 255, 144, 0.2);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
     }
 
     a.button:hover {
-      background: #00cc70;
-      transform: scale(1.03);
+      transform: scale(1.05);
+      background-color: #f4f4f4;
     }
 
     footer {
-      margin-top: 3rem;
+      margin-top: 4rem;
       font-size: 0.9rem;
-      color: #666;
+      color: #222;
+      z-index: 2;
+      position: relative;
     }
 
-    @media (min-width: 600px) {
-      .btn-container {
-        flex-direction: row;
-        justify-content: center;
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.6;
+      animation: floatEmoji 10s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes floatEmoji {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
       }
     }
   </style>
 </head>
 <body>
-  <h1>🎉 Random Everything</h1>
-  <p>Laisse le hasard te surprendre.</p>
+  <h1>✨ Random Everything</h1>
+  <p>Tu sais pas quoi faire ? Clique et laisse-toi surprendre 👇</p>
+  <div class="counter" id="counter">🌍 Nombre de randoms générés : <span id="count">0</span></div>
 
   <div class="btn-container">
-    <a class="button" href="random-pic.html">🖼️ Random Pic</a>
-    <a class="button" href="random-quote.html">🔍 Random Quote</a>
+    <a class="button" href="random-pic.html" onclick="incrementCounter()">🖼️ Image random</a>
+    <a class="button" href="random-quote.html" onclick="incrementCounter()">💭 Citation random</a>
   </div>
 
   <footer>
-    Site créé avec ❤️ — 2025
+    Créé pour explorer le chaos du web — 2025
   </footer>
-</body>
-</html>
 
-    Site Random construit avec passion © 2025
-  </footer>
+  <script>
+    // Emoji animation
+    const emojis = ["💫", "🧠", "👀", "🍕", "🐸", "🎲", "🌈", "😎", "🚀", "🐱‍👤"];
+    const numberOfEmojis = 30;
+
+    for (let i = 0; i < numberOfEmojis; i++) {
+      const emoji = document.createElement("div");
+      emoji.className = "emoji";
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.animationDuration = 6 + Math.random() * 8 + "s";
+      emoji.style.fontSize = (1.5 + Math.random() * 2) + "rem";
+      document.body.appendChild(emoji);
+    }
+
+    // Counter
+    let count = localStorage.getItem("randomCount") || 0;
+    document.getElementById("count").textContent = count;
+
+    function incrementCounter() {
+      count++;
+      localStorage.setItem("randomCount", count);
+      document.getElementById("count").textContent = count;
+    }
+  </script>
 </body>
 </html>
