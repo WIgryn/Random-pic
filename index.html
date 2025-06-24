@@ -2,9 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>🔀 Random Zone</title>
+  <title>🎲 Random Zone</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Découvre un univers aléatoire : images, citations, looks et jeux Steam.">
+  <meta name="description" content="Bienvenue dans la Random Zone – découvre une sélection aléatoire de contenu fun, inspirant et divertissant.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -12,27 +13,37 @@
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top left, #222, #111);
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       color: #fff;
       text-align: center;
-      padding: 3rem 1rem;
-      animation: bgPulse 10s infinite alternate;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
     }
 
-    @keyframes bgPulse {
-      0% {
-        background: radial-gradient(circle at top left, #222, #111);
-      }
-      100% {
-        background: radial-gradient(circle at bottom right, #111, #222);
-      }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
       color: #00ffc3;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 2rem;
     }
 
     .button-grid {
@@ -46,30 +57,36 @@
       background: #00ffc3;
       color: #000;
       padding: 1rem 2rem;
-      border-radius: 10px;
-      font-weight: bold;
+      border-radius: 12px;
+      font-weight: 600;
       text-decoration: none;
-      transition: all 0.3s ease;
       font-size: 1.1rem;
-      box-shadow: 0 0 10px rgba(0, 255, 195, 0.2);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 255, 195, 0.2);
     }
 
     a.button:hover {
       background: #00cfa2;
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(0, 255, 195, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 255, 195, 0.4);
     }
 
     footer {
       margin-top: 4rem;
       font-size: 0.9rem;
-      color: #777;
+      color: #aaa;
+    }
+
+    @media (max-width: 500px) {
+      h1 { font-size: 2rem; }
+      .button-grid { flex-direction: column; gap: 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <h1>🔀 Bienvenue dans la Random Zone</h1>
+  <h1>🎲 Random Zone</h1>
+  <p>Explore du contenu 100% aléatoire : fun, mode, gaming, citations...</p>
 
   <div class="button-grid">
     <a class="button" href="random-pic.html">🖼️ Random Pic</a>
@@ -79,7 +96,7 @@
   </div>
 
   <footer>
-    Fait avec ❤️ par Wigrin • 2025
+    Made with ❤️ by Wigrin · Random Everything 2025
   </footer>
 
 </body>
