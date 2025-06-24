@@ -5,67 +5,26 @@
   <title>🧍‍♂️ Look Homme</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #1e1e1e, #2c3e50);
-      color: #fff;
-      text-align: center;
-    }
-
-    h1 {
-      margin-top: 2rem;
-      font-size: 2.4rem;
-    }
-
-    #lookImage {
-      max-width: 90%;
-      height: auto;
-      margin: 2rem auto;
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.4);
-    }
-
-    .btns {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    button, a {
-      padding: 12px 20px;
-      font-weight: bold;
-      font-size: 1rem;
-      background: #fff;
-      color: #000;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    button:hover, a:hover {
-      background: #f4f4f4;
-      transform: scale(1.05);
-    }
+    body{margin:0;padding:0;font-family:'Segoe UI',sans-serif;background:#1e1e2f;color:#fff;text-align:center}
+    h1{margin-top:2rem;font-size:2.4rem}
+    #lookImage{max-width:90%;height:auto;margin:2rem auto;border-radius:10px;box-shadow:0 0 12px rgba(0,0,0,0.4);}
+    .btns{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;}
+    button,a{padding:12px 20px;font-weight:bold;font-size:1rem;background:#fff;color:#000;border:none;border-radius:10px;cursor:pointer;text-decoration:none;transition:0.3s}
+    button:hover,a:hover{background:#f4f4f4;transform:scale(1.05)}
   </style>
 </head>
 <body>
   <h1>🧍‍♂️ Look Homme</h1>
-  <img id="lookImage" src="https://source.unsplash.com/random/800x1000?man,fashion" alt="Look homme aléatoire">
-  
+  <img id="lookImage" src="https://picsum.photos/800/1000?random=1" alt="Look homme aléatoire">
   <div class="btns">
     <button onclick="refreshImage()">Encore un look</button>
     <a href="random-look.html">🔙 Retour</a>
   </div>
-
   <script>
-    function refreshImage() {
-      const img = document.getElementById("lookImage");
-      img.src = "https://source.unsplash.com/random/800x1000?man,fashion&t=" + new Date().getTime();
+    let count = 1;
+    function refreshImage(){
+      count++;
+      document.getElementById("lookImage").src = "https://picsum.photos/800/1000?random=" + (1000 + count);
     }
   </script>
 </body>
