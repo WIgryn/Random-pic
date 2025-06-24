@@ -9,23 +9,22 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(135deg, #1e1e1e, #2c3e50);
       color: #fff;
       text-align: center;
     }
 
     h1 {
-      font-size: 2.5rem;
       margin-top: 2rem;
-      color: #ccc;
+      font-size: 2.4rem;
     }
 
-    img {
-      margin: 2rem auto;
+    #lookImage {
       max-width: 90%;
-      max-height: 60vh;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      height: auto;
+      margin: 2rem auto;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
     }
 
     .btns {
@@ -39,7 +38,7 @@
       padding: 12px 20px;
       font-weight: bold;
       font-size: 1rem;
-      background: #ffffff;
+      background: #fff;
       color: #000;
       border: none;
       border-radius: 10px;
@@ -56,28 +55,18 @@
 </head>
 <body>
   <h1>🧍‍♂️ Look Homme</h1>
-  <img id="lookImage" src="" alt="Look aléatoire">
+  <img id="lookImage" src="https://source.unsplash.com/random/800x1000?man,fashion" alt="Look homme aléatoire">
+  
   <div class="btns">
-    <button onclick="loadLook()">Encore un look</button>
-    <a href="random-look.html">🔙 Retour au choix</a>
+    <button onclick="refreshImage()">Encore un look</button>
+    <a href="random-look.html">🔙 Retour</a>
   </div>
 
   <script>
-    const looksMen = [
-      "https://source.unsplash.com/800x1000/?man,fashion",
-      "https://source.unsplash.com/800x1000/?streetwear,man",
-      "https://source.unsplash.com/800x1000/?menswear",
-      "https://source.unsplash.com/800x1000/?fashion,urban,man",
-      "https://source.unsplash.com/800x1000/?gq,style"
-    ];
-
-    function loadLook() {
-      const index = Math.floor(Math.random() * looksMen.length);
+    function refreshImage() {
       const img = document.getElementById("lookImage");
-      img.src = looksMen[index] + "&t=" + new Date().getTime();
+      img.src = "https://source.unsplash.com/random/800x1000?man,fashion&t=" + new Date().getTime();
     }
-
-    window.onload = loadLook;
   </script>
 </body>
 </html>
