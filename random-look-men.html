@@ -64,19 +64,17 @@
 
   <script>
     const looksMen = [
-const looksMen = [
-  "https://source.unsplash.com/800x1000/?man,fashion",
-  "https://source.unsplash.com/800x1000/?streetwear,man",
-  "https://source.unsplash.com/800x1000/?outfit,urban",
-  "https://source.unsplash.com/800x1000/?menswear"
-];
-
+      "https://source.unsplash.com/800x1000/?man,fashion",
+      "https://source.unsplash.com/800x1000/?streetwear,man",
+      "https://source.unsplash.com/800x1000/?menswear",
+      "https://source.unsplash.com/800x1000/?fashion,urban,man",
+      "https://source.unsplash.com/800x1000/?gq,style"
     ];
 
     function loadLook() {
-      const img = document.getElementById("lookImage");
       const index = Math.floor(Math.random() * looksMen.length);
-      img.src = looksMen[index] + "?t=" + new Date().getTime();
+      const img = document.getElementById("lookImage");
+      img.src = looksMen[index] + "&t=" + new Date().getTime();
     }
 
     window.onload = loadLook;
