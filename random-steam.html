@@ -195,3 +195,305 @@
   </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎮 Random Steam Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #141e30, #243b55);
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #00ffc3;
+      margin-bottom: 1rem;
+    }
+    .banner {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 20px rgba(0, 255, 195, 0.2);
+    }
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .category-buttons button {
+      background-color: #00ffc3;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    .category-buttons button:hover {
+      background-color: #00cfa2;
+    }
+    .game-box {
+      display: none;
+      background-color: #1c1c1c;
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 100%;
+      margin-top: 1rem;
+      box-shadow: 0 0 20px rgba(0, 255, 195, 0.1);
+    }
+    .game-box img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .stars {
+      color: gold;
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+    }
+    a {
+      color: #00ffc3;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎮 Random Steam Game</h1>
+  <img class="banner" src="img/random-steam-banner.png" alt="Steam Banner" />
+  <div class="category-buttons">
+    <button onclick="showRandomGame('populaire')">🔥 Populaire</button>
+    <button onclick="showRandomGame('rigolo')">🤣 Étranges / Rigolos</button>
+    <button onclick="showRandomGame('solo_multi')">👥 Solo / Multijoueur</button>
+  </div>
+  <div id="gameBox" class="game-box">
+    <img id="gameImage" src="" alt="Steam Game" />
+    <h2 id="gameName"></h2>
+    <div class="stars" id="gameRating"></div>
+    <a id="gameLink" href="#" target="_blank">→ Voir sur Steam</a>
+  </div>
+  <footer>Random Steam © 2025 – Créé par Wigrin</footer>
+  <script>
+    const games = {
+  "populaire": [
+    {
+      "name": "Elden Ring",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
+      "rating": 5,
+      "link": "https://store.steampowered.com/app/1245620/Elden_Ring/"
+    },
+    {
+      "name": "Cyberpunk 2077",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/"
+    },
+    {
+      "name": "Red Dead Redemption 2",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
+      "rating": 5,
+      "link": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/"
+    },
+    {
+      "name": "The Witcher 3",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg",
+      "rating": 5,
+      "link": "https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/"
+    },
+    {
+      "name": "GTA V",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
+      "rating": 5,
+      "link": "https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/"
+    },
+    {
+      "name": "Hogwarts Legacy",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/990080/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/990080/Hogwarts_Legacy/"
+    },
+    {
+      "name": "Assassin\u2019s Creed Valhalla",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/2208920/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/2208920/Assassins_Creed_Valhalla/"
+    },
+    {
+      "name": "God of War",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg",
+      "rating": 5,
+      "link": "https://store.steampowered.com/app/1593500/God_of_War/"
+    },
+    {
+      "name": "Resident Evil 4",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
+      "rating": 5,
+      "link": "https://store.steampowered.com/app/2050650/Resident_Evil_4/"
+    },
+    {
+      "name": "Battlefield 2042",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1517290/header.jpg",
+      "rating": 3,
+      "link": "https://store.steampowered.com/app/1517290/Battlefield_2042/"
+    },
+    {
+      "name": "Apex Legends",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/1172470/Apex_Legends/"
+    },
+    {
+      "name": "PUBG: BATTLEGROUNDS",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/578080/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/578080/PUBG_BATTLEGROUNDS/"
+    },
+    {
+      "name": "Valorant",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1992520/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/1992520/VALORANT/"
+    },
+    {
+      "name": "Call of Duty: MWII",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
+      "rating": 3,
+      "link": "https://store.steampowered.com/app/1938090/Call_of_Duty_Modern_Warfare_II/"
+    },
+    {
+      "name": "Dying Light 2",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/534380/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/534380/Dying_Light_2_Stay_Human/"
+    }
+  ],
+  "rigolo": [
+    {
+      "name": "Goat Simulator",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/265930/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/265930/Goat_Simulator/"
+    },
+    {
+      "name": "I Am Bread",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/327890/header.jpg",
+      "rating": 3,
+      "link": "https://store.steampowered.com/app/327890/I_Am_Bread/"
+    },
+    {
+      "name": "Untitled Goose Game",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/837470/header.jpg",
+      "rating": 5,
+      "link": "https://store.steampowered.com/app/837470/Untitled_Goose_Game/"
+    },
+    {
+      "name": "Octodad: Dadliest Catch",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/224480/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/224480/Octodad_Dadliest_Catch/"
+    },
+    {
+      "name": "Surgeon Simulator",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/233720/header.jpg",
+      "rating": 3,
+      "link": "https://store.steampowered.com/app/233720/Surgeon_Simulator/"
+    },
+    {
+      "name": "Totally Accurate Battle Simulator",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/508440/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/508440/Totally_Accurate_Battle_Simulator/"
+    },
+    {
+      "name": "Pikuniku",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/572890/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/572890/Pikuniku/"
+    },
+    {
+      "name": "Human: Fall Flat",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/477160/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/477160/Human_Fall_Flat/"
+    },
+    {
+      "name": "There Is No Game",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/1240210/header.jpg",
+      "rating": 5,
+      "link": "https://store.steampowered.com/app/1240210/There_Is_No_Game_Wrong_Dimension/"
+    },
+    {
+      "name": "Duck Game",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/312530/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/312530/Duck_Game/"
+    },
+    {
+      "name": "McPixel",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/220860/header.jpg",
+      "rating": 3,
+      "link": "https://store.steampowered.com/app/220860/McPixel/"
+    },
+    {
+      "name": "Scribblenauts Unlimited",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/218680/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/218680/Scribblenauts_Unlimited/"
+    },
+    {
+      "name": "Move or Die",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/323850/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/323850/Move_or_Die/"
+    },
+    {
+      "name": "The Stanley Parable",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/221910/header.jpg",
+      "rating": 5,
+      "link": "https://store.steampowered.com/app/221910/The_Stanley_Parable/"
+    },
+    {
+      "name": "Donut County",
+      "img": "https://cdn.cloudflare.steamstatic.com/steam/apps/702670/header.jpg",
+      "rating": 4,
+      "link": "https://store.steampowered.com/app/702670/Donut_County/"
+    }
+  ]
+};
+
+    function showRandomGame(category) {
+      const list = games[category];
+      const game = list[Math.floor(Math.random() * list.length)];
+      document.getElementById("gameImage").src = game.img;
+      document.getElementById("gameName").textContent = game.name;
+      document.getElementById("gameRating").innerHTML = "★".repeat(game.rating) + "☆".repeat(5 - game.rating);
+      document.getElementById("gameLink").href = game.link;
+      document.getElementById("gameBox").style.display = "block";
+    }
+  </script>
+</body>
+</html>
