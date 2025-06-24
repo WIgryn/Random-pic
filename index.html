@@ -1,127 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>🎉 Random Everything</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Un site plein de surprises aléatoires pour rigoler ou s’inspirer.">
+  <meta charset="UTF-8" />
+  <title>🔀 Random Zone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Découvre un univers aléatoire : images, citations, looks et jeux Steam.">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #fceabb, #f8b500, #ff6f61, #c471f5, #12c2e9);
-      background-size: 400% 400%;
-      animation: gradientFlow 12s ease infinite;
-      color: #000;
-      text-align: center;
-      overflow: hidden;
+    * {
+      box-sizing: border-box;
     }
 
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top left, #222, #111);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1rem;
+      animation: bgPulse 10s infinite alternate;
+    }
+
+    @keyframes bgPulse {
+      0% {
+        background: radial-gradient(circle at top left, #222, #111);
+      }
+      100% {
+        background: radial-gradient(circle at bottom right, #111, #222);
+      }
     }
 
     h1 {
-      font-size: 2.8rem;
-      margin-top: 3rem;
-      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
-    }
-
-    p {
-      font-size: 1.2rem;
+      font-size: 2.5rem;
       margin-bottom: 2rem;
-      color: #333;
+      color: #00ffc3;
     }
 
-    .btn-container {
+    .button-grid {
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 90%;
-      max-width: 340px;
-      margin: 2rem auto;
-      z-index: 2;
-      position: relative;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
     }
 
     a.button {
-      text-decoration: none;
-      background: white;
-      color: #333;
-      padding: 15px;
-      border-radius: 12px;
-      font-size: 1.1rem;
+      background: #00ffc3;
+      color: #000;
+      padding: 1rem 2rem;
+      border-radius: 10px;
       font-weight: bold;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: 0.3s ease;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+      box-shadow: 0 0 10px rgba(0, 255, 195, 0.2);
     }
 
     a.button:hover {
+      background: #00cfa2;
       transform: scale(1.05);
-      background-color: #f4f4f4;
+      box-shadow: 0 0 15px rgba(0, 255, 195, 0.4);
     }
 
     footer {
       margin-top: 4rem;
       font-size: 0.9rem;
-      color: #222;
-      z-index: 2;
-      position: relative;
-    }
-
-    .emoji {
-      position: absolute;
-      font-size: 2rem;
-      opacity: 0.6;
-      animation: floatEmoji 10s linear infinite;
-      pointer-events: none;
-    }
-
-    @keyframes floatEmoji {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) rotate(360deg);
-        opacity: 0;
-      }
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <h1>✨ Random Everything</h1>
-  <p>Tu sais pas quoi faire ? Clique sur un bouton au hasard 👇</p>
 
-  <div class="btn-container">
-    <a class="button" href="random-pic.html">🖼️ Image random</a>
-    <a class="button" href="random-quote.html">💭 Citation random</a>
-    <a class="button" href="random-look.html">🧥 Look random</a>
+  <h1>🔀 Bienvenue dans la Random Zone</h1>
+
+  <div class="button-grid">
+    <a class="button" href="random-pic.html">🖼️ Random Pic</a>
+    <a class="button" href="random-quote.html">💬 Random Quote</a>
+    <a class="button" href="random-look.html">👗 Random Look</a>
+    <a class="button" href="random-steam.html">🎮 Random Steam Game</a>
   </div>
 
   <footer>
-    Créé pour explorer le chaos du web — 2025
+    Fait avec ❤️ par Wigrin • 2025
   </footer>
 
-  <script>
-    const emojis = ["💫", "🧠", "👀", "🍕", "🐸", "🎲", "🌈", "😎", "🚀", "🐱‍👤"];
-    const numberOfEmojis = 30;
-
-    for (let i = 0; i < numberOfEmojis; i++) {
-      const emoji = document.createElement("div");
-      emoji.className = "emoji";
-      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      emoji.style.left = Math.random() * 100 + "vw";
-      emoji.style.animationDuration = 6 + Math.random() * 8 + "s";
-      emoji.style.fontSize = (1.5 + Math.random() * 2) + "rem";
-      document.body.appendChild(emoji);
-    }
-  </script>
 </body>
 </html>
